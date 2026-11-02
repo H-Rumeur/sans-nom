@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SANS-NOM — Acte I : la Brume</title>
+<meta name="description" content="Action-aventure en pixel art. Une brume a volé le nom de tout un village. Une seule personne peut les ramener : celle qui n'en a jamais eu.">
+<meta property="og:title" content="SANS-NOM — Acte I : la Brume">
+<meta property="og:description" content="Une brume a volé le nom de tout un village. Une seule personne peut les ramener : celle qui n'en a jamais eu.">
+<meta name="theme-color" content="#0b0a14">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage"><canvas id="game"></canvas></div>
+
+<div id="hud-btns" hidden>
+  <button id="btn-sound" title="Son (M)">♪</button>
+  <button id="btn-pause" title="Menu (Échap)">☰</button>
+</div>
+
+<div id="banner" hidden></div>
+<div id="toasts"></div>
+
+<div id="dlg" hidden>
+  <canvas id="dlg-face" width="64" height="64"></canvas>
+  <div class="dlg-body">
+    <div id="dlg-name"></div>
+    <div id="dlg-text"></div>
+    <div id="dlg-choices"></div>
+    <span id="dlg-more" hidden>▼</span>
+  </div>
+</div>
+
+<div id="touch">
+  <div id="stick"><div id="knob"></div></div>
+  <div id="tbtns">
+    <button id="tb-e">E</button>
+    <button id="tb-b">⤳</button>
+    <button id="tb-a">⚔</button>
+  </div>
+</div>
+
+<section id="title" class="screen">
+  <div class="inner">
+    <p class="kicker">Acte I — la Brume</p>
+    <h1>SANS<span>-</span>NOM</h1>
+    <p class="tag">Une brume a volé le nom de tout un village.<br>Une seule personne peut les ramener : celle qui n'en a jamais eu.</p>
+    <div class="menu">
+      <button id="t-continue" hidden>Continuer</button>
+      <button id="t-new">Nouvelle partie</button>
+    </div>
+    <p class="help">Flèches / ZQSD : bouger · Espace : épée · Maj : roulade · E : parler · R : potion · Échap : menu<br>Manette et écran tactile supportés · casque recommandé</p>
+  </div>
+</section>
+
+<section id="pause" class="screen dim" hidden>
+  <div class="panel">
+    <h2>Pause</h2>
+    <div id="inv"></div>
+    <div class="menu">
+      <button id="p-resume">Reprendre</button>
+      <button id="p-quit">Sauvegarder et quitter</button>
+    </div>
+  </div>
+</section>
+
+<section id="over" class="screen dim" hidden>
+  <div class="panel center">
+    <h2>Tu t'effondres…</h2>
+    <p>La brume se referme. Mais Mèche brûle encore.</p>
+    <div class="menu"><button id="o-retry">Se relever</button></div>
+  </div>
+</section>
+
+<section id="namebox" class="screen dim" hidden>
+  <div class="panel center">
+    <h2>Ton nom</h2>
+    <p>Les lettres d'or attendent. Comment t'appelles-tu ?</p>
+    <input id="name-input" maxlength="14" autocomplete="off" spellcheck="false">
+    <div class="menu"><button id="name-ok">C'est mon nom</button></div>
+  </div>
+</section>
+
+<section id="end" class="screen" hidden>
+  <div class="inner">
+    <p class="kicker">Fin de l'Acte I</p>
+    <h1 class="small">SANS<span>-</span>NOM</h1>
+    <p class="tag" id="end-sub"></p>
+    <p class="tag dimtxt">Acte II — L'Oubli — à venir</p>
+    <div class="menu"><button onclick="location.reload()">Retour au titre</button></div>
+  </div>
+</section>
+
+<script src="js/pix.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/world.js"></script>
+<script src="js/game.js"></script>
+<script src="js/story.js"></script>
+<script>document.fonts && document.fonts.load('8px "Pixelify Sans"'); boot();</script>
+</body>
+</html>
